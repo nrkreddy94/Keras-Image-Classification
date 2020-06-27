@@ -78,15 +78,15 @@
 				</label>
 				<input type="file" name="file" id="imageUpload" accept="image/*"   multiple="multiple">
 			</div>
-			<div class="img-preview">
+			<div class="img-preview" >
 				<br />
-				<img id="imagePreview" src="#" alt="your image" /><br />
+				<img id="imagePreview" src="#" alt="your image" style="display:none;"/><br />
 				<button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
-				<span class="spinner-border text-warning" id="loader">Loading...</span>
+				<span class="spinner-border text-warning" id="loader" style="display:none;">Loading...</span>
 			</div>
 		</form>
 		<br/>
-		<div id="result" class="table-responsive">
+		<div id="result" class="table-responsive" style="display:none;">
 			<table class="table table-bordered" id="prediction_table">
 				<thead>
 					<tr>

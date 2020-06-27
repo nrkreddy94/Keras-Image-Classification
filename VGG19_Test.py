@@ -7,14 +7,23 @@ Created on Wed Jun 17 07:27:44 2020
 
 from tensorflow.keras.applications.vgg19 import preprocess_input, decode_predictions
 import numpy as np
-
-from tensorflow.keras.models import load_model
+from tensorflow.keras.applications.vgg19 import VGG19
+#from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
 class VGG19_Test:
 
-    MODEL_PATH = 'model_vgg19.h5'
-    model_vgg19=load_model(MODEL_PATH)
+   # MODEL_PATH = 'model_vgg19.h5'
+   #model_vgg19=load_model(MODEL_PATH)
+    model_vgg19= VGG19(
+            include_top=True,
+            weights="imagenet",
+            input_tensor=None,
+            input_shape=None,
+            pooling=None,
+            classes=1000,
+            classifier_activation="softmax",)
+   
 
     @staticmethod
     def model_vgg19_predict(img_path, model=model_vgg19):

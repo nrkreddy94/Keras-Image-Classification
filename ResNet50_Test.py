@@ -8,14 +8,17 @@ Created on Wed Jun 17 07:27:44 2020
 # Keras
 from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 import numpy as np
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.resnet50 import ResNet50
 
 class ResNet50_Test:
     
-    MODEL_PATH = 'model_resnet.h5'
+    #MODEL_PATH = 'model_resnet.h5'
     # Load your trained model
-    model_resnet50 = load_model(MODEL_PATH)
+    #model_resnet50 = load_model(MODEL_PATH)
+    model_resnet50=  ResNet50(weights='imagenet')
+   
 
     @staticmethod
     def model_resnet50_predict(img_path, model=model_resnet50):

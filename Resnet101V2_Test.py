@@ -8,14 +8,24 @@ Created on Wed Jun 17 07:27:44 2020
 
 from tensorflow.keras.applications.resnet_v2 import preprocess_input, decode_predictions
 import numpy as np
-
-from tensorflow.keras.models import load_model
+from tensorflow.keras.applications.resnet_v2 import ResNet101V2
+#from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
 class Resnet101V2_Test:
     
-    MODEL_PATH = 'model_resnet101V2.h5'
-    model_resnet101V2=load_model(MODEL_PATH)
+    #MODEL_PATH = 'model_resnet101V2.h5'
+    #model_resnet101V2=load_model(MODEL_PATH)
+    model_resnet101V2= ResNet101V2(
+                                include_top=True,
+                                weights="imagenet",
+                                input_tensor=None,
+                                input_shape=None,
+                                pooling=None,
+                                classes=1000,
+                                classifier_activation="softmax",
+                            )
+    
     @staticmethod
     def model_resnet101V2_predict(img_path, model=model_resnet101V2):
         img = image.load_img(img_path, target_size=(224, 224))
