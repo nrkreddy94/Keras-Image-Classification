@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block currentMenuItem %}
+<div class="main-navigation">
+	<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+	<ul class="menu">
+		<li class="menu-item "><a href="index.html">ImageClassification</a></li>
+		<li class="menu-item current-menu-item"><a href="about.html">About</a></li>
+		<li class="menu-item"><a href="face_recognition.html">FaceRecognition</a></li>
+		<li class="menu-item"><a href="contact.html">Contact</a></li>
+	</ul> <!-- .menu -->
+
+
+</div> <!-- .main-navigation -->
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="page">
+		<div class="breadcrumbs">
+			<a href="index.html">Home</a>
+			<span>About us</span>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<figure><img src="/static/dummy/figure.jpg" width="60%" alt="figure image"></figure>
+			</div>
+			<div class="col-md-8">
+				<p class="leading">Convolutional neural network</p>
+				
+				<p>A Convolutional Neural Network (ConvNet/CNN) is a Deep Learning algorithm which can take in an input image, assign importance (learnable weights and biases) to various aspects/objects in the image and be able to differentiate one from the other.</p>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-9">
+				<h2 class="section-title">Vision &amp; Misssion</h2>
+				<p>Simplify the searching process and provide you the best prediction with good accuracy </p>
+				<p>In deep learning, a convolutional neural network is a class of deep neural networks, most commonly applied to analyzing visual imagery. They are also known as shift invariant or space invariant artificial neural networks, based on their shared-weights architecture and translation invariance characteristics.</p>
+
+			</div>
+			<div class="col-md-3">
+				<h2 class="section-title">Useful Links</h2>
+				<ul class="arrow">
+					<li><a href="#">ABC source</a></li>
+					<li><a href="#">XYZ source</a></li>
+					<li><a href="#">Hisotry source</a></li>
+
+				</ul>
+			</div>
+		</div> <!-- .row -->
+
+		<h2 class="section-title">Our Team</h2>
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="team">
+					<figure class="team-image"><img src="/static/dummy/person-1.jpg" alt=""></figure>
+					<h2 class="team-name"></h2>
+					<small class="team-title">Co-founder</small>
+					<div class="social-links">
+						<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="" class="google-plus"><i class="fa fa-google-plus"></i></a>
+						<a href="" class="pinterest"><i class="fa fa-pinterest"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="team">
+					<figure class="team-image"><img src="/static/dummy/person-2.jpg" alt=""></figure>
+					<h2 class="team-name"></h2>
+					<small class="team-title">Managing Director</small>
+					<div class="social-links">
+						<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="" class="google-plus"><i class="fa fa-google-plus"></i></a>
+						<a href="" class="pinterest"><i class="fa fa-pinterest"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="team">
+					<figure class="team-image"><img src="/static/dummy/person-3.jpg" alt=""></figure>
+					<h2 class="team-name"></h2>
+					<small class="team-title">Reviewer</small>
+					<div class="social-links">
+						<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="" class="google-plus"><i class="fa fa-google-plus"></i></a>
+						<a href="" class="pinterest"><i class="fa fa-pinterest"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="team">
+					<figure class="team-image"><img src="/static/dummy/person-4.jpg" alt=""></figure>
+					<h2 class="team-name"></h2>
+					<small class="team-title">Consultant</small>
+					<div class="social-links">
+						<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="" class="google-plus"><i class="fa fa-google-plus"></i></a>
+						<a href="" class="pinterest"><i class="fa fa-pinterest"></i></a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div> <!-- .container -->
+{% endblock %}

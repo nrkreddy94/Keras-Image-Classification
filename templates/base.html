@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+    <link rel="shortcut icon" href="/static/images/tab-icon.png" type="image/png" />
+    <title>CNN Keras |  {{ title }}</title>
+
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+        <![endif]-->
+
+
+    {% block  header%}{% endblock %}
+
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="/static/liveChat.css">
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        .b-agent-demo .user-request,
+        .b-agent-demo .server-response {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            margin-bottom: 2px;
+            font-size: 13px;
+            clear: both;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="site-content">
+        <header class="site-header">
+            <div class="container">
+                <a href="index.html" id="branding">
+                    <img src="/static/images/logo.png" alt="" class="logo">
+                    <div class="logo-copy">
+                        <h1 class="site-title">Keras</h1>
+                        <small class="site-description">Convolutional Neural Network</small>
+                    </div>
+                </a> <!-- #branding -->
+
+                {% block  currentMenuItem %}{% endblock %}
+
+                <div class="mobile-navigation"></div>
+            </div>
+        </header>
+        <main class="main-content">
+            {% block content %}{% endblock %}
+
+
+        </main>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">About Us</h3>
+                            <p>Keras app works on Convolution Nural Network deep learning algorithm.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">Recent Review</h3>
+                            <ul class="no-bullet">
+                                <li>Thank you Team, You simplifed the Prediction of unknown things</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">Help Center</h3>
+                            <ul class="no-bullet">
+                                <li><a href="#">Bangalore</a></li>
+                                <li><a href="#">XYZ</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">Join Us</h3>
+                            <ul class="no-bullet">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Twitter</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">Social Media</h3>
+                            <ul class="no-bullet">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">Google+</a></li>
+                                <li><a href="#">Pinterest</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">Newsletter</h3>
+                            <form action="#" class="subscribe-form">
+                                <input type="text" placeholder="Email Address">
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- .row -->
+
+                <div class="colophon">Copyright 2020 CNN Keras. All rights reserved</div>
+            </div> <!-- .container -->
+
+        </footer>
+    </div>
+    <!-- Default snippet for navigation -->
+
+    <!--Live chat -->
+    <div id="proactive-offer-container">
+
+        <div id="contact-widget-launcher" class="hide-mobile"
+            style="display: block; opacity: 0; bottom: -30px; transition-property: none; transition-timing-function: unset; transition-duration: 200ms; z-index: -1;">
+            <a class="contact-widget-button">
+                <svg class="bi bi-chat-dots-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                </svg>
+                <span>Chat With US</span>
+            </a>
+        </div>
+        <div id="contact-widget" class="hide-mobile"
+            style="opacity: 1; bottom: 0px; transition-property: opacity, width, height, bottom; transition-timing-function: ease; transition-duration: 300ms; z-index: 9998;">
+            <div class="contact-widget-inner">
+
+                <div class="contact-widget-reveal">
+                    <div class="form-header">
+                        <div class="form-title">
+                            <div id="show">
+                                <h3>Chat With US
+
+                                    <svg class="bi bi-chat-dots-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                    </svg>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-content">
+                        <div id="live_chat" style="display:none;">
+                            <iframe allow="microphone;"
+                                src="https://console.dialogflow.com/api-client/demo/embedded/f1db4aaa-27a6-465d-a4e6-fc4de1216ff2">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--End Live chat -->
+
+
+    <script src="/static/js/jquery-1.11.1.min.js"></script>
+    <script src="/static/js/plugins.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#show").click(function () {
+                $("#live_chat").slideToggle("slow", "linear");
+
+            });
+
+        });
+    </script>
+
+    {% block script %}{% endblock %}
+
+</body>
+
+</html>

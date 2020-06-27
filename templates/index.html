@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block currentMenuItem %}
+<div class="main-navigation">
+	<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+	<ul class="menu">
+		<li class="menu-item current-menu-item"><a href="index.html">ImageClassification</a></li>
+		<li class="menu-item"><a href="about.html">About</a></li>
+		<li class="menu-item"><a href="face_recognition.html">FaceRecognition</a></li>
+		<li class="menu-item"><a href="contact.html">Contact</a></li>
+	</ul> <!-- .menu -->
+</div> <!-- .main-navigation -->
+{% endblock %}
+
+{% block header %}
+<style>
+	.loader {
+		border: 5px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 5px solid #3498db;
+		width: 30px;
+		height: 30px;
+		-webkit-animation: spin 2s linear infinite;
+		animation: spin 2s linear infinite;
+	}
+
+	/* Safari */
+	@-webkit-keyframes spin {
+		0% {
+			-webkit-transform: rotate(0deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	#imagePreview {
+		height: auto;
+		width: 50%;
+	}
+
+	#prediction_table tbody tr:last-child {
+		background: #32CD32;
+		font-size: large;
+	}
+
+	#similar_img {
+		font-size: medium;
+	}
+
+	#prediction_table tbody td {
+		padding: 4% 4%;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="page">
+		<div class="row">
+		<h2>Image Classification</h2>
+
+		<form id="upload-file" method="post" enctype="multipart/form-data">
+			<div class="img-choose">
+				<label for="imageUpload" class="upload-label">
+					Choose an image
+				</label>
+				<input type="file" name="file" id="imageUpload" accept="image/*"   multiple="multiple">
+			</div>
+			<div class="img-preview">
+				<br />
+				<img id="imagePreview" src="#" alt="your image" /><br />
+				<button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
+				<span class="spinner-border text-warning" id="loader">Loading...</span>
+			</div>
+		</form>
+		<br/>
+		<div id="result" class="table-responsive">
+			<table class="table table-bordered" id="prediction_table">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Predicted</th>
+						<th>accuracy</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>NASNetLarge</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>ResNet50</td>
+						<td></td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<td>Resnet101V2</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>VGG19</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Finalized</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+				<caption>
+					<h5><a href="#" target="_blank" id="similar_img"></a></h5>
+				</caption>
+
+			</table>
+		</div>
+	</div>
+	</div>
+</div> <!-- .container -->
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		$("#prediction_table  tbody td").css({"padding":"3px 3px"})
+		var $loading = $('#loader').hide();
+		$('#result').hide();
+		$('#imagePreview').hide()
+        
+		// Upload Preview
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#imagePreview').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+				$('#imagePreview').show()
+			}
+		}
+		$("#imageUpload").change(function () {
+			readURL(this);
+		});
+		// Predict
+		$('#btn-predict').click(function () {
+			var form_data = new FormData($('#upload-file')[0]);
+			$loading.show();
+			$.ajax({
+				type: 'POST',
+				url: '/predict',
+				data: form_data,
+				contentType: false,
+				cache: false,
+				processData: false,
+				async: true,
+				success: function (data) {
+					$loading.hide();
+					$('#result').show();
+
+					$('#prediction_table td:eq(1)').text(data.NASNetLarge.split(",")[0]);
+					$('#prediction_table td:eq(2)').text(Math.floor((data.NASNetLarge.split(",")[1]) * 100) + "%");
+
+					$('#prediction_table td:eq(4)').text(data.ResNet50.split(",")[0]);
+					$('#prediction_table td:eq(5)').text(Math.floor((data.ResNet50.split(",")[1]) * 100) + "%");
+
+					$('#prediction_table td:eq(7)').text(data.Resnet101V2.split(",")[0]);
+					$('#prediction_table td:eq(8)').text(Math.floor((data.Resnet101V2.split(",")[1]) * 100) + "%");
+
+					$('#prediction_table td:eq(10)').text(data.VGG19.split(",")[0]);
+					$('#prediction_table td:eq(11)').text(Math.floor((data.VGG19.split(",")[1]) * 100) + "%");
+
+					$('#prediction_table td:eq(13)').text(data.Finalized.split(",")[0]);
+					$('#prediction_table td:eq(14)').text(Math.floor((data.Finalized.split(",")[1]) * 100) + "%");
+
+					var predicted = data.Finalized.split(",")[0]
+					var ref = "https://www.google.com/search?q=" + predicted + "&tbm=isch"
+
+					$("#similar_img").html("similar images of " + predicted)
+					$("#similar_img").attr("href", ref)
+
+				},
+				 error: function(xhr, error){
+                    console.log(xhr);
+                    console.log(error);
+                    $loading.hide();
+					$('#result').show();
+					$("#similar_img").html("Something went wrong, please try again")
+                 }
+ 
+			});
+		});
+
+	});
+</script>
+{% endblock %}
